@@ -1,11 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
-import { Form, Icon, Input, Button, Checkbox,  message} from 'antd';
-import { Link } from 'react-router-dom'
+import { Form, Icon, Input, Button, message } from 'antd';
+import { Link } from 'react-router-dom';
 import { API_ROOT } from '../constants';
-
 const FormItem = Form.Item;
-
 class NormalLoginForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
@@ -16,11 +14,11 @@ class NormalLoginForm extends React.Component {
                     url: `${API_ROOT}/login`,
                     method: 'POST',
                     data: JSON.stringify({
-                       username: values.username,
-                       password: values.password,
+                        username: values.username,
+                        password: values.password,
                     }),
                 }).then((response) => {
-                    message.success(response);
+                    this.props.loginHandler(response);
                 }, (error) => {
                     message.error(error.responseText);
                 }).catch((error) => {
@@ -57,5 +55,4 @@ class NormalLoginForm extends React.Component {
         );
     }
 }
-
 export const Login = Form.create()(NormalLoginForm);
