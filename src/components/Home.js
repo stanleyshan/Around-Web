@@ -9,6 +9,7 @@ const operations = <Button>Extra Action</Button>;
 export class Home extends React.Component {
     state = {
         loadingGeoLocation: false,
+        loadingPosts: false,
         error: ' ',
     }
 
@@ -43,11 +44,11 @@ export class Home extends React.Component {
 
     getGalleryPanelContent = () => {
         if (this.state.error) {
-            return <div>{this.state.error}</div>
+            return <div>{this.state.error}</div>;
         } else if (this.state.loadingGeoLocation) {
-            return <Spin tip="Loading geo location..."/>
-        } else {
-            return null;
+            return <Spin tip="Loading geo location..."/>;
+        } else if (this.state.loadingPosts){
+            return <Spin tip="Loading geo posts..."/>;
         }
     }
 
@@ -63,8 +64,10 @@ export class Home extends React.Component {
                 Authorization: `${AUTH_PREFIX} ${localStorage.getItem(TOKEN_KEY)}`,
             },
         }).then((response) => {
+            this.setState({ loadingPosts: false, error: '' });
             console.log(response);
         }, (error) => {
+            this.setState({ loadingPosts: false, error: error.responseText });
             console.log(error);
         }).catch((error) => {
             console.log(error);
