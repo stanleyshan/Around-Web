@@ -10,6 +10,11 @@ class createPostForm extends React.Component {
         }
         return e && e.fileList;
     }
+
+    beforeUpload = () => {
+        return false;
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
@@ -39,7 +44,7 @@ class createPostForm extends React.Component {
                             getValueFromEvent: this.normFile,
                             rules: [{ required: true, message: 'Please select an image.' }],
                         })(
-                            <Upload.Dragger name="files" action="/upload.do">
+                            <Upload.Dragger name="files" beforeUpload={this.beforeUpload}>
                                 <p className="ant-upload-drag-icon">
                                     <Icon type="inbox" />
                                 </p>
