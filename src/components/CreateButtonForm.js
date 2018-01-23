@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Upload, Icon } from 'antd';
 const FormItem = Form.Item;
 
-class createPostForm extends React.Component {
+class CreatePostForm extends React.Component {
     normFile = (e) => {
         console.log('Upload event:', e);
         if (Array.isArray(e)) {
@@ -21,7 +21,6 @@ class createPostForm extends React.Component {
             labelCol: { span: 6 },
             wrapperCol: { span: 14 },
         };
-
         return (
             <Form layout="vertical">
                 <FormItem
@@ -33,7 +32,6 @@ class createPostForm extends React.Component {
                         <Input />
                     )}
                 </FormItem>
-
                 <FormItem
                     {...formItemLayout}
                     label="Image"
@@ -54,10 +52,9 @@ class createPostForm extends React.Component {
                         )}
                     </div>
                 </FormItem>
-
             </Form>
         );
     }
 }
 
-export const WrappedCreatePostForm = Form.create()(createPostForm)
+export const WrappedCreatePostForm = Form.create()(CreatePostForm);
