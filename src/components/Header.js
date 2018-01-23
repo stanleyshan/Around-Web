@@ -2,7 +2,6 @@ import React  from 'react';
 import logo from '../assets/images/logo.svg';
 import { Icon } from 'antd';
 import PropTypes from 'prop-types';
-
 export class Header extends React.Component {
     static propTypes = {
         isLoggedIn: PropTypes.bool.isRequired,
@@ -18,7 +17,7 @@ export class Header extends React.Component {
                         <a className="logout"
                            onClick={this.props.logoutHandler}
                         >
-                            <Icon type="logout" />{'  '}Logout
+                            <Icon type="logout" />{' '}Logout
                         </a> : null
                 }
             </header>
